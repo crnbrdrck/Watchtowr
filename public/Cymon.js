@@ -30,13 +30,11 @@ function getCymon(term, start, end, size) {
 
 function storeThreats(Tid, descr, progVers, city){
     //potential logic to separate program from version.
-    firebase.database().ref(`threads`).push()
-        {
-            ThreatId: Tid,
-            description: descr,
-            //program: prog,
-            versionAffected: progVers,
-            Loc: city,
-        }
-    );
+    firebase.database().ref('threads').push({
+        ThreatId: Tid,
+        description: descr,
+        //program: prog,
+        versionAffected: progVers,
+        Loc: city
+    });
 }
