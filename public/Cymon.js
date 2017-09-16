@@ -1,27 +1,27 @@
 // Get data from cymon
 var Tid
 function getCymon(term, start, end, size) {
-    var JWToken;
+    /*var JWToken;
     $.post("https://api.cymon.io/v2/auth/login", { username: "HTN-ThreatMonitor", password: "Ruthenium45" },
         function (JWToken, Message) {
             console.log("Token: " + JWToken + "\nMessage: " + Message);
-        });
+        });*/
 
     $.ajax({
         url: "https://api.cymon.io/v2/ioc/search/term/" + term,
         type: 'GET',
         beforeSend: function (xhr) {
-            xhr.setRequestHeader('Authorization', 'bearer' + JWToken);
+           // xhr.setRequestHeader('Authorization', 'bearer' + JWToken);
         },
         data: { startDate: start, endDate: end, from: 0, size: size },
         success: function (data) {
-            data.hits.foreach(function (e) {
-                console.log(e);
-            });
+            for (var i in data){
+                console.log(data[i]);
+            };
             Tid++;
             descr = data.hits.Title;
             progVers = data.hits.description;
-            city = data.hits.loc.city;
+            city = data.hits.loc;
             storeThreats(Tid, descr, progVers, city);
         },
         error: function (err) { console.log("Error", err); }
