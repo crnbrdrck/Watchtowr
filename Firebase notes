@@ -32,5 +32,3 @@ firebase
 .push for writes
 
 const functions= require('firebase-functions')
-
-codelabs.developers.google.com
