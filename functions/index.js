@@ -1,12 +1,15 @@
 const functions = require('firebase-functions');
-exports.ServerUpdate = functions.database.ref('/servers/{instances}/')
+const admin = require('firebase-admin');
+admin.initializeApp(functions.config().firebase);
+
+exports.ServerUpdate = functions.database.ref('/servers/{instance}')
     .onWrite(event => {
         const apps = event.data.val();
         LogIssue("test", "1234");
         console.log(apps);
         usr = event.data.ref();
         console.log(ref);//should contain the path
-        return event.data.ref.parent.child('test').set("3");
+        return 3;
     });
 
 function issueMatch(ApacheVers, SQLVers, UbuntuVers, Loc, server_id) {
