@@ -60,3 +60,9 @@ function multiSearch(searches) {
     });
 }
     
+function testUpdate() {
+    random = Math.random();
+    firebase.database().ref('servers/-KuAJDJfSw-FYI7tFUIa').set({
+        os_version: "Ubuntu 16.04" + random,
+    });
+}
