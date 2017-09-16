@@ -12,13 +12,19 @@ function getCymon(term, start, end, size) {
             function (data) {
                 console.log(data);
                 for (i = 0; i < size; i++) {
-                    Tid++;
-                    descr = data.hits[i].description;
-                    time = data.hits[i].timestamp;
-                    progVers = data.hits[i].title;
-                    city = data.hits[i].location.city;
-                    if (typeof descr === 'undefined') descr="n/a";
-                    storeThreats(Tid, time, descr, progVers, city);
+                    if (typeof data.hits[i] != 'undefined') {
+                        Tid++;
+                        descr = data.hits[i].Title;
+                        time = data.hits[i].timestamp;
+                        progVers = data.hits[i].description;
+                        if (typeof data.hits[i].location != 'undefined')
+                        { city = data.hits[i].location.city; }
+
+                        if (typeof descr === 'undefined') { descr = "n/a" };
+                        if (typeof city === 'undefined') city = "n/a";
+                        if (typeof progVers === 'undefined') progVers = "n/a";
+                        storeThreats(Tid, time, descr, progVers, city);
+                    }
                 }
             });
 }
@@ -44,13 +50,13 @@ function multiSearch(searches) {
     Month = today.getMonth();
     Year = today.getFullYear();
     dateEnd = Year.toString() + "-"+("0" + Month.toString()).slice(-2) + "-"+("0" + (dayNum).toString()).slice(-2); //today's date string'
-    today.setDate(today.getDate() - 10);
+    today.setDate(today.getDate() - 30);
     dayNum = today.getDate();
     Month = today.getMonth();
     Year = today.getFullYear();
     dateStart = Year.toString() + "-"+("0" + Month.toString()).slice(-2) + "-"+("0" + (dayNum).toString()).slice(-2); //10 days back
     searches.forEach(function (a) {
-       console.log(a, dateStart, "    ", dateEnd, 10);
+        getCymon(a, dateStart, dateEnd, 10);
     });
 }
     
