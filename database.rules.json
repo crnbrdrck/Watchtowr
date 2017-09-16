@@ -1,6 +1,12 @@
 {
   "rules": {
     ".read": "auth != null",
-    ".write": "auth != null"
+    ".write": "auth != null",
+    "servers": {
+      ".indexOn": ["user_id"]
+    },
+    "issues": {
+      ".indexOn": ["server_id"]
+    }
   }
 }
