@@ -40,4 +40,4 @@ jobs:
 
       # run tests
       # Deploy latest code
-      - run: ./node_modules/firebase-tools/bin/firebase deploy
+      - run: ./node_modules/firebase-tools/bin/firebase deploy --token "$FIREBASE_TOKEN" --non-interactive
