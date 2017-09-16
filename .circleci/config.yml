@@ -40,4 +40,5 @@ jobs:
 
       # run tests
       # Deploy latest code
+      - run: ls ./node_modules/
       - run: ./node_modules/firebase_tools/bin/firebase.js deploy
