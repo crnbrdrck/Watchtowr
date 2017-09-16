@@ -72,8 +72,7 @@
                     name: document.getElementById('name').value
                 });
                 console.log(server);
-                firebase.database().ref('applications').push({
-                    server_id: server.key,
+                firebase.database().ref('servers/' + server.key + '/applications').push({
                     name: 'Apache',
                     version: document.getElementById('apache_ver').value
                 });
