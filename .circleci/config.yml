@@ -38,6 +38,6 @@ jobs:
 
       # run tests!
       # Install firebase-tools
-      npm install -g firebase-tools
+      - run: npm install -g firebase-tools
       # Deploy latest code
-      firebase deploy
+      - run: firebase deploy
