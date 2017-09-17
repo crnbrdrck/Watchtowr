@@ -8,7 +8,7 @@ const mailer = require('./services/Mailer');
 exports.ServerUpdate = functions.database.ref('/servers/{instance}')
     .onWrite(event => {
         const apps = event.data.val();
-        admin.database().ref('/servers/{instance}/applications/{id}').once('value').then(function (snapshot) {
+        admin.database().ref('/servers/{instance}/applications').once('value').then(function (snapshot) {
             applications = snapshot.val(); //I ccould combine these into a single call But i won't
         });
         admin.database().ref('/servers/{instance}/os_version').once('value').then(function (snapshot) {
