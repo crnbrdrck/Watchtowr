@@ -28,14 +28,9 @@ jobs:
           - v1-dependencies
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies
-
       - run: npm install
       # Install firebase-tools
-      - run: npm install --save firebase-tools
-      # npm install inside functions folder
-      - run: cd functions
-      - run: npm install
-      - run: cd ..
+      - run: npm install --save firebase-tools sendgrid
 
       - save_cache:
           paths:
