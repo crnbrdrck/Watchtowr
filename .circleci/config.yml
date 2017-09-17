@@ -32,6 +32,10 @@ jobs:
       - run: npm install
       # Install firebase-tools
       - run: npm install --save firebase-tools
+      # npm install inside functions folder
+      - run: cd functions
+      - run: npm install
+      - run: cd -
 
       - save_cache:
           paths:
