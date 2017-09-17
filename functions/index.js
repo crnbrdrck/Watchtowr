@@ -24,8 +24,8 @@ function issueMatch(app_id, server_id) {
     let threats = [];
     // Cross reference with threats where the name of the threat is contained in the app
     admin.database().ref('threats').orderByKey().on('child_added', function(snapshot) {
-        let threat = snapshot.key().lower();
-        if (app.name.lower().index(threat) !== -1){
+        let threat = snapshot.key.toLowerCase();
+        if (app.name.toLowerCase().index(threat) !== -1){
             // Check for correct version
             console.log('Possible Threat detected');
         }
