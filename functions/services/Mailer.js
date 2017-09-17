@@ -1,43 +1,25 @@
-const sendgrid = require('sendgrid');
-const helper = sendgrid.mail;
-const keys = require('../config/keys');
+const smtp = require('smtp-client');
 
 
-class Mailer extends helper.Mail {
+class Mailer {
     constructor ({subject,recipient}, content) {
-        super();
-        
-        this.sgApi = sendgrid(keys.sendGridKey);
-        this.from_email = new helper.Email('no-reply@watchtowr.com');
-        this.subject = subject;
-        this.body = new helper.Content('text/html', content);
-        this.recipient = new helper.Email(recipient);
-        
-        this.addContent(this.body);
-        const personalize = new helper.Personalization();
-        personalize.addTo(recipient);
-        this.addPersonalization(personalize);
-        this.addClickTracking();
-        
-    }
-    
-    addClickTracking() {
-        const trackingSettings = new helper.TrackingSettings();
-        const clickTracking = new helper.ClickTracking(true,true);
-        
-        trackingSettings.setClickTracking(clickTracking);
-        this.addTrackingSettings(trackingSettings);
-    }
-    
-    async send() {
-        const request = this.sgApi.emptyRequest({
-            method: 'POST',
-            path: '/v3/mail/send',
-            body: this.toJSON()
+
+        let s = new smtp({
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true
         });
+
+        (async function() {
+            await s.connect();
+            await s.greet({hostname: 'smtp.gmail.com'}); // runs EHLO command or HELO as a fallback
+            await s.authPlain({username: 'watchtowrthreats@gmail.com', password: 'w4tcht0wr'}); // authenticates a user
+            await s.mail({from: 'watchtowrthreats@gmail.com'}); // runs MAIL FROM command
+            await s.rcpt({to: recipient}); // runs RCPT TO command (run this multiple times to add more recii)
+            await s.data(content); // runs DATA command and streams email source
+            await s.quit(); // runs QUIT command
+        })().catch(console.error);
         
-        const response = this.sgApi.API(request);
-        return response;
     }
 }
 
