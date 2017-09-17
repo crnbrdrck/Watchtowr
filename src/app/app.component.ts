@@ -9,5 +9,3 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'DISCOVERING SERVER THREATS AROUND THE WORLD';
 }
-
-
