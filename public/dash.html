@@ -1,4 +1,3 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <!DOCTYPE html>
 <html>
   <head>
@@ -20,40 +19,114 @@
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
 </head>
+<body style="padding: 50px 50px 50px 50px;">
+  <nav id="nav" style="float: right; margin-right: 50px;">
+            <div class="container-fluid">
 
-<body>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <!-- my work -->
+                     <li> <a href="index.html" class="active">About Us</a></li>
+                      </ul>
+
+                 <ul class="nav navbar-nav">
+                    <li><a href="HeatMap.html">Threat Map</a></li>
+                    </ul>
+
+                <ul class="nav navbar-nav">
+                    <li><a href="dash.html">Dashboard</a></li>
+                    </ul>
+
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Login</a></li>
+                    </ul>
+        
+                    <ul class="nav navbar-nav">
+                    <li><a href="mailto:watchtowrthreat@gmailcom?Subject=Hello!%20" target="_top"> Contact Us</a> </li>
+                    </ul>
+
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+
 <div style="float:left; margin-top: 20px">
 <img src="images/logo.png" style="width: 260px;">
  <h4>    
   DISCOVERING SERVER THREATS AROUND THE WORLD
  </h4>
 </div>
-<p style="font-size: 12px; float:right; margin-top: 20px; margin-right: 50px;"> Log In With Google </p>
 <div style="clear: both;"> </div>
 <br>
 <br>
 <br>
 <br>
-<div style="padding: 50px 50px 50px 50px;"> <!-- flex-box -->
-<h3> Search </h3>
+<div style="padding: 0px 0px 0px 0px;" class="panel ">
+<h3 style="color: #7EB600"> Search </h3>
 <h5> Date Range</h5>
 <h5> Threat Type</h5>
 <h5> Threat Status</h5>
 <h5> Sort By</h5>
 <h5> Server</h5>
+</div>
 
 
-<h3> Servers Monitored </h3>
+<h3 style="color: #7EB600"> Servers Monitored </h3>
 <h5> We4Need_Sleep</h5>
 <h5> 1WantedPoutine</h5>
 <h5> BaseFireSoLit</h5>
 
-<h3> Threats Found </h3>
-<h5> {{threat}} </h5> 
+<h3 style="color: #7EB600"> Threats Found </h3>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
+        // Check for changes in auth state
+        let currentUser;
+        firebase.auth().onAuthStateChanged(user => {
+            if(user) {
+                // Authenticated
+                currentUser = user;
+                document.querySelector('#username').innerHTML = user.displayName;
+                // Get all servers owned by the logged in user
+                let server_list = document.getElementById('servers');
+                let ref = firebase.database().ref('servers');
+                ref.orderByChild('user_id').equalTo(currentUser.uid).on('child_added', function(snapshot) {
+                    let li = document.createElement('li');
+                    let text = document.createTextNode(snapshot.val().name);
+                    li.appendChild(text);
+                    // Now we need to check for any issues for this server that are not fixed
+                    let issue_list = document.createElement('ul');
+                    firebase.database().ref('issues').orderByChild('server_id').equalTo(snapshot.key).on('child_added', function(inner_snapshot) {
+                        if(!inner_snapshot.val().fixed) {
+                            let issue_li = document.createElement('li');
+                            issue_li.appendChild(document.createTextNode(inner_snapshot.val().issue));
+                            issue_list.append(issue_li);
+                        }
+                    });
+                    console.log(issue_list);
+                    li.appendChild(issue_list);
+                    server_list.appendChild(li);
+                });
+            }
+        });
+    });
+</script>
+<h5> {{threat}} </h5> 
 <h5> {{threatA}}</h5>
 <h5> {{threatB}}</h5>
+</div>
 
+</body>
 </div>
 
   <div class="buttonHolder">
