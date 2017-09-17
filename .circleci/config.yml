@@ -35,7 +35,7 @@ jobs:
       # npm install inside functions folder
       - run: cd functions
       - run: npm install
-      - run: cd -
+      - run: cd ..
 
       - save_cache:
           paths:
