@@ -1,7 +1,7 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
-//const mailer = require('../services/Mailer');
+const mailer = require('../services/Mailer');
 //const template=require('../services/templates/template');
 
 
