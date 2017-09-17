@@ -17,6 +17,10 @@ function issueMatch(app_id, server_id) {
     let serverKey = 'servers/' + server_id;
     let applicationKey = serverKey + '/applications/' + app_id;
     let app;
+    // 'FIX' all existing issues for this server
+    admin.database().ref('issues').orderByChild('server_id').equalTo(server_id).on('value', function(snapshot){
+        admin.database.ref('issues/' + snapshot.key).update({fixed: true});
+    });
     admin.database().ref(applicationKey).orderByKey().on('child_added', function(snapshot) {
         app = {name: snapshot.key, val: snapshot.val()};
         console.log(app);
@@ -62,3 +66,11 @@ function LogIssue(Issue, instance) {
         server_id: instance
     });
 }
+
+function vulnerable(appVer, threatVer){
+    // Assume semver for now. Report whether appVer is vulnerable for the threat
+    appVer = appVer.split('.');
+    while(appVer.length < 3) { appVer.push('0'); }
+    threatVer = threatVer.split('.');
+    while(threatVer.length < 3) { threatVer.push('0'); } 
+    return appVer[0] < threatVer[0] || appVer[0] == threatVer[0] && appVer[1] < threatVer[1] || appVer[0] == threatVer[0] && appVer[1] == threatVer[1] && appVer[2] < threatVer[2];
