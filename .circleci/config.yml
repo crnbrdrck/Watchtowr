@@ -30,7 +30,7 @@ jobs:
           - v1-dependencies
       - run: npm install
       # Install firebase-tools
-      - run: npm install --save firebase-tools 
+      - run: npm install --save firebase-tools sendgrid
 
       - save_cache:
           paths:
