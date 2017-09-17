@@ -51,11 +51,11 @@ function LogIssue(Issue, instance) {
         RecipientEmail = snapshot.val(); //find user from server instance
     });
 
-    //const Mail = new mailer({ subject:"Watchtowr Alert", recipient:RecipientEmail }, template);
-    //Mail.send();
+    const Mail = new mailer({ subject:"Watchtowr Alert", recipient:RecipientEmail }, template);
+    Mail.send();
     admin.database().ref('/issues').push({
         fixed: false,
         issue: Issue,
-        server_id: instance,
+        server_id: instance
     });
 }
