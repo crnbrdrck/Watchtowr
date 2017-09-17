@@ -8,36 +8,24 @@ const mailer = require('./services/Mailer');
 exports.ServerUpdate = functions.database.ref('/servers/{instance}')
     .onWrite(event => {
         const apps = event.data.val();
-        firebase.database().ref('/servers/{ instance}/applications/apache').once('value').then(function (snapshot) {
-            ApacheVers = snapshot.val(); //I ccould combine these into a single call But i won't
+        firebase.database().ref('/servers/{instance}/applications/{id}').once('value').then(function (snapshot) {
+            applications = snapshot.val(); //I ccould combine these into a single call But i won't
         });
-        firebase.database().ref('/servers/{ instance}/applications/MYSQL').once('value').then(function (snapshot) {
-            SQLVers = snapshot.val();
-        });
-        firebase.database().ref('/servers/{ instance}/os_version').once('value').then(function (snapshot) {
+        firebase.database().ref('/servers/{instance}/os_version').once('value').then(function (snapshot) {
             UbuntuVers = snapshot.val();
         });
         firebase.database().ref('/servers/{instance}').once('value').then(function (snapshot) {
             serverID = snapshot.val();
         });
-        issueMatch(ApacheVers, SQLVers, UbuntuVers, locX, locY, serverID);
+        issueMatch(applications, UbuntuVers, serverID);
     });
 
-function issueMatch(ApacheVers, SQLVers, UbuntuVers, locX, locY, server_id) {
+function issueMatch(applications, UbuntuVers, server_id) {
     //compare server stats to threats list, post issue to user if match found
-    var versionAffected;
-    firebase.database().ref('/threats/').once('value').then(function (snapshot) {
-        snapshot.forEach(function (childSnapshot) {
-            versionAffected = snapshot.val();
-            console.log(versionAffected);
-            if (versionAffected.includes(ApacheVers || SQLVers || UbuntuVers)) { LogIssue(versionAffected, server_id); }
-        });
-    });
-    
-        firebase.database().ref('/threats/{id}/city').once('value').then(function (snapshot) {
-            location = snapshot.val();
-        if (Loc == location) { LogIssue(("Malware in your area" + location), server_id); }   
-        });
+    // Go through each application, see what it is and check threats for it
+    applications.forEach(function(app) {
+        console.log(app);
+    }
 }
 
 function LogIssue(Issue, instance) {
