@@ -5,7 +5,7 @@ const mailer = require('../services/Mailer');
 //const template=require('../services/templates/template');
 
 
-exports.ServerUpdate = functions.database.ref('/servers/{instance}')
+exports.ServerUpdate = functions.database().ref('/servers/{instance}')
     .onWrite(event => {
         const apps = event.data.val();
         firebase.database().ref('/servers/{ instance}/applications/apache').once('value').then(function (snapshot) {
