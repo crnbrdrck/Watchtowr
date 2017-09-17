@@ -11,14 +11,14 @@ class Mailer {
         });
     }
 
-    async send() {
-        var x = await this.s.connect();
-        x = await this.s.greet({hostname: 'smtp.gmail.com'}); // runs EHLO command or HELO as a fallback
-        x = await this.s.authPlain({username: 'watchtowrthreats@gmail.com', password: 'w4tcht0wr'}); // authenticates a user
-        x = await this.s.mail({from: 'watchtowrthreats@gmail.com'}); // runs MAIL FROM command
-        x = await this.s.rcpt({to: recipient}); // runs RCPT TO command (run this multiple times to add more recii)
-        x = await this.s.data(content); // runs DATA command and streams email source
-        x = await this.s.quit(); // runs QUIT command
+    send() {
+        this.s.connect();
+        this.s.greet({hostname: 'smtp.gmail.com'}); // runs EHLO command or HELO as a fallback
+        this.s.authPlain({username: 'watchtowrthreats@gmail.com', password: 'w4tcht0wr'}); // authenticates a user
+        this.s.mail({from: 'watchtowrthreats@gmail.com'}); // runs MAIL FROM command
+        this.s.rcpt({to: recipient}); // runs RCPT TO command (run this multiple times to add more recii)
+        this.s.data(content); // runs DATA command and streams email source
+        this.s.quit(); // runs QUIT command
     }
 }
 
