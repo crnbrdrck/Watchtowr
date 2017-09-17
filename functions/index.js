@@ -2,7 +2,6 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 const mailer = require('./services/Mailer');
-//const template=require('../services/templates/template');
 
 
 exports.ServerUpdate = functions.database.ref('servers/{instance}/applications/{app_id}')
@@ -25,7 +24,7 @@ function issueMatch(app_id, server_id) {
     // Cross reference with threats where the name of the threat is contained in the app
     admin.database().ref('threats').orderByKey().on('child_added', function(snapshot) {
         let threat = snapshot.key.toLowerCase();
-        if (app.name.toLowerCase().index(threat) !== -1){
+        if (app.key.toLowerCase().index(threat) !== -1){
             // Check for correct version
             console.log('Possible Threat detected');
         }
