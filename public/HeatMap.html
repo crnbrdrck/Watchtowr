@@ -4,18 +4,6 @@
     <meta charset="utf-8">
     <title>Heatmaps</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-      <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
-      <script>
-          // Initialize Firebase
-          // TODO: Replace with your project's customized code snippet
-          var config = {
-              apiKey: "",
-              authDomain: "htn-threatmonitor.firebaseapp.com",
-              databaseURL: "https://htn-threatmonitor.firebaseio.com",
-              storageBucket: "htn-threatmonitor..appspot.com",
-          };
-          firebase.initializeApp(config);
-      </script>
     <!-- update the version number as needed -->
     <script src="/__/firebase/4.3.1/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
@@ -73,7 +61,7 @@
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
+          zoom: 10,
           center: {lat: 43.473, lng: -80.540},
           mapTypeId: 'satellite'
         });
@@ -109,7 +97,10 @@
          var marker = new google.maps.Marker({
            position: latLng,
            map: map
-         });}}
+         });
+            }
+        }
+        window.onload= getData();
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRgosvdg1YcLRnW5saHwFo7Da6sYvHXzw&callback=initMap">
