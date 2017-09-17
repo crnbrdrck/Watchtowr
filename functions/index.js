@@ -17,7 +17,7 @@ exports.ServerUpdate = functions.database.ref('servers/{instance}/applications')
         admin.database().ref('servers/{instance}').once('value').then(function (snapshot) {
             serverID = snapshot.val();
         });
-        issueMatch(apps, UbuntuVers, serverID);
+        issueMatch(apps, '', '');
     });
 
 function issueMatch(applications, UbuntuVers, server_id) {
