@@ -1,0 +1,34 @@
+Firebase
+
+Deploy website using console commands
+
+add JS files to add functionality. Add google/facebook sign in through auth tab
+
+
+Basic structure. GET reports from cymon to firebase database
+parse reports and associate issues with versions or patches potntiall code itself
+User signs in
+Grab user's system details and compare
+Send alerts to user
+
+
+
+firebase
+.auth()
+signIn WithPopup(provider)
+then result
+user =
+
+use auth button to fire authentication
+
+firebase.auth() for sign ins
+
+READ/Write to database
+
+firebase
+.database()
+//create innerHTML object and update with read from database
+
+.push for writes
+
+const functions= require('firebase-functions')

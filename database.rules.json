@@ -1,0 +1,22 @@
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null",
+    "servers": {
+      ".indexOn": ["user_id"],
+      ".read": "true",
+      ".write": "true"
+    },
+    "applications": {
+      ".read": "true",
+      ".write": "true"
+    },
+    "commands": {
+      ".read": "true",
+      ".write": "true"
+    },
+    "issues": {
+      ".indexOn": ["server_id"]
+    }
+  }
+}
