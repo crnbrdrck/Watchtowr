@@ -8,8 +8,8 @@ const mailer = require('./services/Mailer');
 exports.ServerUpdate = functions.database.ref('/servers/{instance}/applications')
     .onCreate(event => {
         const apps = event.data.val();
-        admin.database().ref('/servers/{instance}/applications').once('value').then(function (snapshot) {
-            applications = snapshot.val(); //I ccould combine these into a single call But i won't
+        admin.database().ref('/servers/{instance}/applications/{app_id}').once('value').then(function (snapshot) {
+            applications = snapshot.val(); //I could combine these into a single call But i won't
         });
         admin.database().ref('/servers/{instance}/os_version').once('value').then(function (snapshot) {
             UbuntuVers = snapshot.val();
@@ -23,7 +23,7 @@ exports.ServerUpdate = functions.database.ref('/servers/{instance}/applications'
 function issueMatch(applications, UbuntuVers, server_id) {
     //compare server stats to threats list, post issue to user if match found
     // Go through each application, see what it is and check threats for it
-    console.log(applications);
+    console.log(applications, UbuntuVers, server_id);
 }
 
 function LogIssue(Issue, instance) {
