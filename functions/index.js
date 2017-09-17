@@ -36,7 +36,7 @@ function issueMatch(app_id, server_id) {
                 // Search through all the threat versions to see if your app version is < the threat
                 admin.database().ref('threats/' + snapshot.key).orderByKey().on('child_added', function(inner_snap) {
                     // Check the version against the app
-                    if(vulnerable(app.val, inner_snap.val().version){
+                    if(vulnerable(app.val, inner_snap.val().version)){
                         LogIssue(app.name + ' is outdated. Try upgrading.', server_id);
                         break;
                     }
