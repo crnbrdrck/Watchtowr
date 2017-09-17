@@ -38,7 +38,7 @@ function issueMatch(app_id, server_id) {
                     // Check the version against the app
                     if(vulnerable(app.val, inner_snap.val().version)){
                         LogIssue(app.name + ' is outdated. Try upgrading.', server_id);
-                        break;
+                        return;
                     }
                 });
             }
