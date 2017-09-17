@@ -5,25 +5,31 @@ const mailer = require('./services/Mailer');
 //const template=require('../services/templates/template');
 
 
-exports.ServerUpdate = functions.database.ref('servers/{instance}/applications')
+exports.ServerUpdate = functions.database.ref('servers/{instance}/applications/{app_id}')
     .onCreate(event => {
-        const apps = event.data.val();
-        admin.database().ref('servers/{instance}/applications/{app_id}').once('value').then(function (snapshot) {
-            applications = snapshot.val(); //I could combine these into a single call But i won't
-        });
-        admin.database().ref('servers/{instance}/os_version').once('value').then(function (snapshot) {
-            UbuntuVers = snapshot.val();
-        });
-        admin.database().ref('servers/{instance}').once('value').then(function (snapshot) {
-            serverID = snapshot.val();
-        });
-        issueMatch(apps, '', '');
+        let app_id = event.params.app_id;
+        let server_id = event.params.instance;
+        issueMatch(app_id, server_id);
     });
 
-function issueMatch(applications, UbuntuVers, server_id) {
+function issueMatch(app_id, server_id) {
     //compare server stats to threats list, post issue to user if match found
     // Go through each application, see what it is and check threats for it
-    console.log(applications, UbuntuVers, server_id);
+    let serverKey = 'servers/' + server_id;
+    let applicationKey = serverKey + '/applications/' + app_id;
+    let app;
+    admin.database.ref(applicationKey).orderByKey().on('child_added', function(snapshot) {
+        app = snapshot.val()
+    });
+    let threats = [];
+    // Cross reference with threats where the name of the threat is contained in the app
+    admin.database.ref('threats').orderByKey().on('child_added', function(snapshot) {
+        let threat = snapshot.key.lower();
+        if (app.name.lower().index(threat) !== -1){
+            // Check for correct version
+            console.log('Possible Threat detected');
+        }
+    });
 }
 
 function LogIssue(Issue, instance) {
