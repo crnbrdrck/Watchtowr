@@ -2,9 +2,12 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
+  styleUrls: ['./app.component.css'],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
-  title = 'app';
+  title = 'DISCOVERING SERVER THREATS AROUND THE WORLD';
 }
+
+
