@@ -1,0 +1,64 @@
+[debug] [2017-09-17T09:32:34.841Z] ----------------------------------------------------------------------
+[debug] [2017-09-17T09:32:34.845Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2017-09-17T09:32:34.845Z] CLI Version:   3.11.0
+[debug] [2017-09-17T09:32:34.845Z] Platform:      darwin
+[debug] [2017-09-17T09:32:34.846Z] Node Version:  v6.10.3
+[debug] [2017-09-17T09:32:34.846Z] Time:          Sun Sep 17 2017 05:32:34 GMT-0400 (EDT)
+[debug] [2017-09-17T09:32:34.847Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-09-17T09:32:34.864Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-09-17T09:32:34.865Z] > authorizing via signed-in user
+[debug] [2017-09-17T09:32:34.867Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/htn-threatmonitor  
+ Sun Sep 17 2017 05:32:34 GMT-0400 (EDT)
+[debug] [2017-09-17T09:32:35.175Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-17T09:32:35.177Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/htn-threatmonitor/tokens  
+ Sun Sep 17 2017 05:32:35 GMT-0400 (EDT)
+[debug] [2017-09-17T09:32:35.603Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/RIta/watchtowr'...
+[info] 
+[debug] [2017-09-17T09:32:35.608Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/htn-threatmonitor  
+ Sun Sep 17 2017 05:32:35 GMT-0400 (EDT)
+[debug] [2017-09-17T09:32:35.911Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-17T09:32:35.912Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/683458180425/clients/_:getWebAppConfig  
+ Sun Sep 17 2017 05:32:35 GMT-0400 (EDT)
+[debug] [2017-09-17T09:32:36.131Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+
+[debug] [2017-09-17T10:51:12.424Z] ----------------------------------------------------------------------
+[debug] [2017-09-17T10:51:12.427Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2017-09-17T10:51:12.428Z] CLI Version:   3.11.0
+[debug] [2017-09-17T10:51:12.428Z] Platform:      darwin
+[debug] [2017-09-17T10:51:12.428Z] Node Version:  v6.10.3
+[debug] [2017-09-17T10:51:12.428Z] Time:          Sun Sep 17 2017 06:51:12 GMT-0400 (EDT)
+[debug] [2017-09-17T10:51:12.429Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-09-17T10:51:12.445Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-09-17T10:51:12.446Z] > authorizing via signed-in user
+[debug] [2017-09-17T10:51:12.448Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-09-17T10:51:12.448Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/O99xcVAlr4Ex_qkAwDhh6elYkQVCsp62aN1UMh5jK3A',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sun Sep 17 2017 06:51:12 GMT-0400 (EDT)
+[debug] [2017-09-17T10:51:12.573Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-17T10:51:12.575Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/htn-threatmonitor  
+ Sun Sep 17 2017 06:51:12 GMT-0400 (EDT)
+[debug] [2017-09-17T10:51:12.842Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-17T10:51:12.843Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/htn-threatmonitor/tokens  
+ Sun Sep 17 2017 06:51:12 GMT-0400 (EDT)
+[debug] [2017-09-17T10:51:13.144Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/RIta/watchtowr'...
+[info] 
+[debug] [2017-09-17T10:51:13.147Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/htn-threatmonitor  
+ Sun Sep 17 2017 06:51:13 GMT-0400 (EDT)
+[debug] [2017-09-17T10:51:13.375Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-17T10:51:13.375Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/683458180425/clients/_:getWebAppConfig  
+ Sun Sep 17 2017 06:51:13 GMT-0400 (EDT)
+[debug] [2017-09-17T10:51:13.554Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+

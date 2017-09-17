@@ -1,3 +1,5 @@
+
+<!--The content below is only a placeholder and can be replaced.-->
 <!DOCTYPE html>
 <html>
   <head>
@@ -62,40 +64,72 @@
 <br>
 <br>
 <br>
-<div style="padding: 0px 0px 0px 0px;">
-<h3 style="color: #7EB600"> Search </h3>
-<h5> Date Range</h5>
-                    <a data-toggle="dropdown" class="active dropdown">Date Range<b class="caret"></b></a>
-
-                            <ul class="dropdown-menu">
-                                <div class="menu-items">
-                                    <li><a href="nasa.html" class="active">NASA SpaceApps Toronto 2017 </a></li>
-                                    <li><a href="enghacks.html">EngHacks 2017</a></li>
-                                    <!--
-                                        <li><a href="#">NextGen Creators</a></li>
-
-                                        <li><a href="#">Springboard UX Portfolio Course</a></li> -->
-                                </div>
-                                <!-- Menu items -->
-                            </ul>
-<h5> Threat Type</h5>
-<h5> Threat Status</h5>
-<h5> Sort By</h5>
-<h5> Server</h5>
+<div class="column_left" style="padding-left: 20px; padding-bottom: 20px; padding-right: -10px;">
+<h3 style="color: #7EB600"> Search </h3>                  
+<select> class="ui dropdown">
+      <option value="">Date Range</option>
+    <option value="1">Sep/10/2017 - Sep/20/2017</option>
+      <option value="0">Sep/01/2017 - Sep/09/2017</option>
+        <option value="0">Aug/21/2017 - Aug/31/2017</option>
+    </select>
+<br>
+<br>
+    <select> class="ui dropdown">
+      <option value="">Threat Type</option>
+      <option value="1">Local Threat</option>
+      <option value="0">Upgrade Needed</option>
+        <option value="0">Virus</option>
+    </select>
+<br>
+<br>
+    <select> class="ui dropdown">
+      <option value="">Threat Status</option>
+      <option value="1">Action Required</option>
+      <option value="0">No Solution</option>
+        <option value="0">Fixed</option>
+    </select>
+<br>
+<br>
+    <select> class="ui dropdown">
+      <option value="">Sort By</option>
+      <option value="1">Most Recent</option>
+      <option value="0">Least Recent</option>
+    </select>
+<br>
+<br>
+    <select> class="ui dropdown">
+      <option value="">Server</option>
+      <option value="1">We4Need_Sleep</option>
+      <option value="0">1WantedPoutine</option>
+      <option value="0">BaseFireSoLit</option>
+    </select>
+<br>
+<br>
+<br><br>
+  <div class="buttonHolder" style="float: left;">
+    <button class="btn btn-primary">
+      Search
+    </button>
+    </div>
 </div>
 
 
+<div class="column_right" style="padding-left: 20px; padding-bottom: 162px; margin-right: 60px">
 <h3 style="color: #7EB600" class="form"> Servers Monitored </h3>
 <h5> We4Need_Sleep</h5>
 <h5> 1WantedPoutine</h5>
-<h5> BaseFireSoLit</h5>
-
-<h3 style="color: #7EB600"> Threats Found </h3>
-  <div ng-app="app">
-  <div ng-controller="MyController">
-    <dtable options="options" rows="data" class="material"></dtable>
+<h5> BaseFireSoLit</h5> 
   </div>
-</div>
+
+<div style="margin-top: 350px;">
+  <h3 style="color: #7EB600;"> Threats Found </h3>
+  <img src="/images/Screenshot 2017-09-17 09.02.40.png">
+    <div ng-app="app">
+    <div ng-controller="MyController">
+      <dtable options="options" rows="data" class="material"></dtable>
+    </div>
+  </div>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -142,37 +176,28 @@
 </script>
 
 <script type="text/javascript">
-  var module = angular.module('app', ['data-table']);
+      var module = angular.module('app', ['data-table']);
 
-module.controller('MyController', function($scope, $http) {
-  $scope.options = {
-    rowHeight: 50,
-    headerHeight: 50,
-    footerHeight: false,
-    scrollbarV: false,
-    selectable: false,
-    columns: [{
-      name: "Threat",
-      width: 700
-    }, {
-      name: "Tag"
-    }]
-  };
+    module.controller('MyController', function($scope, $http) {
+      $scope.options = {
+        rowHeight: 50,
+        headerHeight: 50,
+        footerHeight: false,
+        scrollbarV: false,
+        selectable: false,
+        columns: [{
+          name: "Threat",
+          width: 700
+        }, {
+          name: "Tag"
+        }]
+      };
 
-  $http.get('https://cdn.rawgit.com/Swimlane/angular-data-table/master/demos/data/100.json').success(function(data) {
-    $scope.data = data;
-</script>
-
+      $http.get('https://cdn.rawgit.com/Swimlane/angular-data-table/master/demos/data/100.json').success(function(data) {
+        $scope.data = data;
+    </script>
 </div>
-
-</body>
 </div>
-
-  <div class="buttonHolder">
-    <button class="btn btn-primary">
-      Install Now
-    </button>
-    </div>
 
 </body>
 

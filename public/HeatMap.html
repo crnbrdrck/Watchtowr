@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Heatmaps</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- update the version number as needed -->
+    <script src="/__/firebase/4.3.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script src="/__/firebase/4.3.1/firebase-auth.js"></script>
+    <script src="/__/firebase/4.3.1/firebase-database.js"></script>
+    <script src="/__/firebase/4.3.1/firebase-messaging.js"></script>
+    <script src="/__/firebase/4.3.1/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script src="/__/firebase/init.js"></script>
+
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 80%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 10px;
+        padding: 0;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+      #floating-panel {
+        background-color: #fff;
+        border: 1px solid #999;
+        left: 25%;
+        padding: 5px;
+        position: absolute;
+        top: 10px;
+        z-index: 5;
+      }
+      }
+    </style>
+  </head>
+
+  <body>
+<h1>Cymon ThreatMap</h1>
+    <div id="map"></div>
+      <p style="italic">Currently displaying threats to Apache, Python, MySQL, and Ubuntu</p>
+    <script>
+      var map;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: {lat: 43.473, lng: -80.540},
+          mapTypeId: 'satellite'
+        });
+        }
+
+        // Get a database reference to our posts
+        var ref = firebase.database().ref('cymon');
+
+        function getData() {
+
+            // Attach an asynchronous callback to read the data at our posts reference
+            ref.on("value", function (snapshot) {
+                console.log(snapshot.val());
+                for (var i in snapshot.val()) {
+                    lat = snapshot.val()[i].lat;
+                    lng = snapshot.val()[i].long;
+                    var latLng = { lat: lat, lng: lng };
+                    console.log(latLng);
+                    var marker = new google.maps.Marker({
+                        position: latLng,
+                        map: map
+                    });
+                }
+            });
+        }
+
+
+
+        window.eqfeed_callback = function(results) {
+       for (var i = 0; i < results.features.length; i++) {
+         var coords = results.features[i].geometry.coordinates;
+         var latLng = new google.maps.LatLng(coords[1],coords[0]);
+         var marker = new google.maps.Marker({
+           position: latLng,
+           map: map
+         });
+            }
+        }
+        window.onload= getData();
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRgosvdg1YcLRnW5saHwFo7Da6sYvHXzw&callback=initMap">
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+[debug] [2017-09-17T11:10:05.489Z] ----------------------------------------------------------------------
+[debug] [2017-09-17T11:10:05.493Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Stefan\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2017-09-17T11:10:05.494Z] CLI Version:   3.11.0
+[debug] [2017-09-17T11:10:05.494Z] Platform:      win32
+[debug] [2017-09-17T11:10:05.494Z] Node Version:  v6.11.3
+[debug] [2017-09-17T11:10:05.494Z] Time:          Sun Sep 17 2017 07:10:05 GMT-0400 (Eastern Daylight Time)
+[debug] [2017-09-17T11:10:05.494Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-09-17T11:10:05.507Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-09-17T11:10:05.508Z] > authorizing via signed-in user
+[debug] [2017-09-17T11:10:05.510Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/htn-threatmonitor  
+ Sun Sep 17 2017 07:10:05 GMT-0400 (Eastern Daylight Time)
+[debug] [2017-09-17T11:10:05.888Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-17T11:10:05.893Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/htn-threatmonitor/tokens  
+ Sun Sep 17 2017 07:10:05 GMT-0400 (Eastern Daylight Time)
+[debug] [2017-09-17T11:10:06.225Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\Stefan\Documents\HTN'...
+[info] 
+[debug] [2017-09-17T11:10:06.255Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/htn-threatmonitor  
+ Sun Sep 17 2017 07:10:06 GMT-0400 (Eastern Daylight Time)
+[debug] [2017-09-17T11:10:06.686Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-17T11:10:06.686Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/683458180425/clients/_:getWebAppConfig  
+ Sun Sep 17 2017 07:10:06 GMT-0400 (Eastern Daylight Time)
+[debug] [2017-09-17T11:10:06.876Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+
