@@ -18,13 +18,14 @@ function issueMatch(app_id, server_id) {
     let applicationKey = serverKey + '/applications/' + app_id;
     let app;
     admin.database().ref(applicationKey).orderByKey().on('child_added', function(snapshot) {
-        app = snapshot.val()
+        app = snapshot.val();
+        console.log(app);
     });
     let threats = [];
     // Cross reference with threats where the name of the threat is contained in the app
     admin.database().ref('threats').orderByKey().on('child_added', function(snapshot) {
         let threat = snapshot.key.toLowerCase();
-        if (app.key.toLowerCase().index(threat) !== -1){
+        if (app.keys()[0].toLowerCase().index(threat) !== -1){
             // Check for correct version
             console.log('Possible Threat detected');
         }
