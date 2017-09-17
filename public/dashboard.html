@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -12,8 +12,6 @@
     <script defer src="/__/firebase/4.3.1/firebase-database.js"></script>
     <script defer src="/__/firebase/4.3.1/firebase-messaging.js"></script>
     <script defer src="/__/firebase/4.3.1/firebase-storage.js"></script>
-    <script defer src="Cymon.js"></script>
-    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
 
@@ -33,13 +31,10 @@
 </head>
 <body>
 <div id="message">
-    <form id="add_server">
-        <label for="name">Server Name</label>
-        <input type="text" name="name" id="name" /><br />
-        <label for="apache_ver">Apache Version</label>
-        <input type="text" name="apache_ver" id="apache_ver" />
-        <input type="submit" />
-    </form>
+    <h2 id="username"></h2>
+    <ul id="servers">
+
+    </ul>
 </div>
 
 <script>
@@ -60,26 +55,29 @@
             if(user) {
                 // Authenticated
                 currentUser = user;
-            }
-        })
-
-        // Login Button
-        document.getElementById('add_server').onsubmit = function(e) {
-            e.preventDefault();
-            try {
-                let server = firebase.database().ref('servers').push({
-                    user_id: currentUser.uid,
-                    name: document.getElementById('name').value
+                document.querySelector('#username').innerHTML = user.displayName;
+                // Get all servers owned by the logged in user
+                let server_list = document.getElementById('servers');
+                let ref = firebase.database().ref('servers');
+                ref.orderByChild('user_id').equalTo(currentUser.uid).on('child_added', function(snapshot) {
+                    let li = document.createElement('li');
+                    let text = document.createTextNode(snapshot.val().name);
+                    li.appendChild(text);
+                    // Now we need to check for any issues for this server that are not fixed
+                    let issue_list = document.createElement('ul');
+                    firebase.database().ref('issues').orderByChild('server_id').equalTo(snapshot.key).on('child_added', function(inner_snapshot) {
+                        if(!inner_snapshot.val().fixed) {
+                            let issue_li = document.createElement('li');
+                            issue_li.appendChild(document.createTextNode(inner_snapshot.val().issue));
+                            issue_list.append(issue_li);
+                        }
+                    });
+                    console.log(issue_list);
+                    li.appendChild(issue_list);
+                    server_list.appendChild(li);
                 });
-                console.log(server);
-                firebase.database().ref('servers/' + server.key + '/applications').push({
-                    name: 'Apache',
-                    version: document.getElementById('apache_ver').value
-                });
-            } catch (e) {
-                console.error(e);
             }
-        };
+        });
     });
 </script>
 </body>
