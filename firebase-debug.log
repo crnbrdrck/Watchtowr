@@ -34,3 +34,38 @@
 [info] i  hosting: Serving hosting files from: public
 [info] ✔  hosting: Local server: http://localhost:5000
 
+[debug] [2017-09-17T09:28:52.681Z] ----------------------------------------------------------------------
+[debug] [2017-09-17T09:28:52.684Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2017-09-17T09:28:52.685Z] CLI Version:   3.11.0
+[debug] [2017-09-17T09:28:52.685Z] Platform:      darwin
+[debug] [2017-09-17T09:28:52.685Z] Node Version:  v6.10.3
+[debug] [2017-09-17T09:28:52.685Z] Time:          Sun Sep 17 2017 05:28:52 GMT-0400 (EDT)
+[debug] [2017-09-17T09:28:52.685Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-09-17T09:28:52.702Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-09-17T09:28:52.703Z] > authorizing via signed-in user
+[debug] [2017-09-17T09:28:52.705Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/htn-threatmonitor  
+ Sun Sep 17 2017 05:28:52 GMT-0400 (EDT)
+[debug] [2017-09-17T09:28:53.068Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-17T09:28:53.069Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/htn-threatmonitor/tokens  
+ Sun Sep 17 2017 05:28:53 GMT-0400 (EDT)
+[debug] [2017-09-17T09:28:53.885Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/RIta/watchtowr'...
+[info] 
+[debug] [2017-09-17T09:28:53.889Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/htn-threatmonitor  
+ Sun Sep 17 2017 05:28:53 GMT-0400 (EDT)
+[debug] [2017-09-17T09:28:54.238Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-17T09:28:54.238Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/683458180425/clients/_:getWebAppConfig  
+ Sun Sep 17 2017 05:28:54 GMT-0400 (EDT)
+[debug] [2017-09-17T09:28:54.576Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[debug] [2017-09-17T09:28:54.613Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/htn-threatmonitor  
+ Sun Sep 17 2017 05:28:54 GMT-0400 (EDT)
+[debug] [2017-09-17T09:28:54.815Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-17T09:28:54.815Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/683458180425/clients/_:getWebAppConfig  
+ Sun Sep 17 2017 05:28:54 GMT-0400 (EDT)
+[debug] [2017-09-17T09:28:55.150Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5004
+
