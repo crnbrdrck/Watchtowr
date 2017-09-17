@@ -51,7 +51,8 @@ function LogIssue(Issue, instance) {
         RecipientEmail = snapshot.val(); //find user from server instance
     });
 
-    const Mail = new mailer({ subject:"Watchtowr Alert", recipient:RecipientEmail }, template);
+    const Mail = new mailer({ subject:"Watchtowr Alert", recipient:RecipientEmail },
+                           'We found anerror on your server. Go to https://htn-threatmonitor.firebaseapp.com for more details');
     Mail.send();
     admin.database().ref('/issues').push({
         fixed: false,
