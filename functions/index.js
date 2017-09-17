@@ -74,3 +74,4 @@ function vulnerable(appVer, threatVer){
     threatVer = threatVer.split('.');
     while(threatVer.length < 3) { threatVer.push('0'); } 
     return appVer[0] < threatVer[0] || appVer[0] == threatVer[0] && appVer[1] < threatVer[1] || appVer[0] == threatVer[0] && appVer[1] == threatVer[1] && appVer[2] < threatVer[2];
+}
