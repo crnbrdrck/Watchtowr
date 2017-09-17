@@ -5,8 +5,8 @@ const mailer = require('./services/Mailer');
 //const template=require('../services/templates/template');
 
 
-exports.ServerUpdate = functions.database.ref('/servers/{instance}')
-    .onWrite(event => {
+exports.ServerUpdate = functions.database.ref('/servers/{instance}/applications')
+    .onCreate(event => {
         const apps = event.data.val();
         admin.database().ref('/servers/{instance}/applications').once('value').then(function (snapshot) {
             applications = snapshot.val(); //I ccould combine these into a single call But i won't
@@ -23,9 +23,7 @@ exports.ServerUpdate = functions.database.ref('/servers/{instance}')
 function issueMatch(applications, UbuntuVers, server_id) {
     //compare server stats to threats list, post issue to user if match found
     // Go through each application, see what it is and check threats for it
-    applications.forEach(function(app) {
-        console.log(app);
-    });
+    console.log(applications);
 }
 
 function LogIssue(Issue, instance) {
