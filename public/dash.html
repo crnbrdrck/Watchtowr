@@ -113,19 +113,22 @@
 </div>
 
 
-<div class="column_right" style="padding-left: 20px; padding-bottom: 162px;">
+<div class="column_right" style="padding-left: 20px; padding-bottom: 162px; margin-right: 60px">
 <h3 style="color: #7EB600" class="form"> Servers Monitored </h3>
 <h5> We4Need_Sleep</h5>
 <h5> 1WantedPoutine</h5>
 <h5> BaseFireSoLit</h5> 
   </div>
 
-<h3 style="color: #7EB600"> Threats Found </h3>
-  <div ng-app="app">
-  <div ng-controller="MyController">
-    <dtable options="options" rows="data" class="material"></dtable>
+<div style="margin-top: 350px;">
+  <h3 style="color: #7EB600;"> Threats Found </h3>
+  <img src="/images/Screenshot 2017-09-17 09.02.40.png">
+    <div ng-app="app">
+    <div ng-controller="MyController">
+      <dtable options="options" rows="data" class="material"></dtable>
+    </div>
   </div>
-</div>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -172,37 +175,29 @@
 </script>
 
 <script type="text/javascript">
-  var module = angular.module('app', ['data-table']);
+      var module = angular.module('app', ['data-table']);
 
-module.controller('MyController', function($scope, $http) {
-  $scope.options = {
-    rowHeight: 50,
-    headerHeight: 50,
-    footerHeight: false,
-    scrollbarV: false,
-    selectable: false,
-    columns: [{
-      name: "Threat",
-      width: 700
-    }, {
-      name: "Tag"
-    }]
-  };
+    module.controller('MyController', function($scope, $http) {
+      $scope.options = {
+        rowHeight: 50,
+        headerHeight: 50,
+        footerHeight: false,
+        scrollbarV: false,
+        selectable: false,
+        columns: [{
+          name: "Threat",
+          width: 700
+        }, {
+          name: "Tag"
+        }]
+      };
 
-  $http.get('https://cdn.rawgit.com/Swimlane/angular-data-table/master/demos/data/100.json').success(function(data) {
-    $scope.data = data;
-</script>
-
+      $http.get('https://cdn.rawgit.com/Swimlane/angular-data-table/master/demos/data/100.json').success(function(data) {
+        $scope.data = data;
+    </script>
+</div>
 </div>
 
-</body>
-</div>
-
-  <div class="buttonHolder">
-    <button class="btn btn-primary">
-      Install Now
-    </button>
-    </div>
 
 </body>
 
