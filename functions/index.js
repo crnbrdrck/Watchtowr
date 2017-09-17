@@ -25,7 +25,7 @@ function issueMatch(applications, UbuntuVers, server_id) {
     // Go through each application, see what it is and check threats for it
     applications.forEach(function(app) {
         console.log(app);
-    }
+    });
 }
 
 function LogIssue(Issue, instance) {
