@@ -1,8 +1,8 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
-const mailer = require('./services/Mailer.js');
-const template=require('./services/templates/template.js');
+const mailer = require('../services/Mailer');
+const template=require('../services/templates/template');
 
 
 exports.ServerUpdate = functions.database.ref('/servers/{instance}')
@@ -51,8 +51,8 @@ function LogIssue(Issue, instance) {
         RecipientEmail = snapshot.val(); //find user from server instance
     });
 
-    const Mail = new Mailer({ subject:"Watchtowr Alert", recipient:RecipientEmail }, template);
-    Mail.send();
+    const Mail = new mailer({ subject:"Watchtowr Alert", recipient:RecipientEmail }, template);
+    //Mail.send();
     admin.database().ref('/issues').push({
         fixed: false,
         issue: Issue,
