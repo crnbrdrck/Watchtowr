@@ -29,6 +29,7 @@
   }
   }           
 
+
 .navbar-nav {
   margin: 7.5px -15px;
 }
@@ -1334,11 +1335,7 @@ button.close{padding:0;cursor:pointer;background:0 0;border:0;-webkit-appearance
 .modal-header{padding:15px;border-bottom:1px solid #e5e5e5}
 .tooltip.bottom .tooltip-arrow,.tooltip.bottom-left .tooltip-arrow,.tooltip.bottom-right .tooltip-arrow{top:0;border-width:0 5px 5px;border-bottom-color:#000}
 .modal-header .close{margin-top:-2px}
-<<<<<<< HEAD
 .modal-title{margin:0;line-height:1.42857143;}
-=======
-.modal-title{margin:0;line-height:1.42857143}
->>>>>>> 2f26b95fad2e43500a88d27dff3db2f77947f1ae
 .modal-body{position:relative;padding:15px}
 .modal-footer{padding:15px;text-align:right;border-top:1px solid #e5e5e5}
 .modal-footer .btn+.btn{margin-left:5px;margin-bottom:0}
