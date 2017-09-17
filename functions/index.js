@@ -5,7 +5,7 @@ const mailer = require('./services/Mailer');
 //const template=require('../services/templates/template');
 
 
-exports.ServerUpdate = functions.database.ref('/servers/{instance}/applications')
+exports.ServerUpdate = functions.database.ref('/servers')
     .onCreate(event => {
         const apps = event.data.val();
         admin.database().ref('/servers/{instance}/applications/{app_id}').once('value').then(function (snapshot) {
