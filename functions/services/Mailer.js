@@ -1,4 +1,4 @@
-const smtp = require('smtp-client');
+const smtp = require('smtp-client').SMTPClient;
 
 
 class Mailer {
