@@ -19,7 +19,7 @@ function issueMatch(app_id, server_id) {
     let app;
     // 'FIX' all existing issues for this server
     admin.database().ref('issues').orderByChild('server_id').equalTo(server_id).on('value', function(snapshot){
-        admin.database.ref('issues/' + snapshot.key).update({fixed: true});
+        admin.database().ref('issues/' + snapshot.key).update({fixed: true});
     });
     admin.database().ref(applicationKey).orderByKey().on('child_added', function(snapshot) {
         app = {name: snapshot.key, val: snapshot.val()};
