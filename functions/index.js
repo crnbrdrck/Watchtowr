@@ -30,6 +30,7 @@ function issueMatch(app_id, server_id) {
     if (typeof app !== 'undefined'){
         admin.database().ref('threats').orderByKey().on('child_added', function(snapshot) {
             let threat = snapshot.key.toLowerCase();
+            console.log('Checking for threats in', app.name, '.', threat)
             if (app.name.indexOf(threat) !== -1){
                 // Check for correct version
                 console.log('Possible Threat detected: ' + threat);
@@ -57,7 +58,7 @@ function LogIssue(Issue, instance) {
         RecipientEmail = snapshot.val(); //find user from server instance
     });
 
-    const Mail = new mailer({ subject:"Watchtowr Alert", recipient:RecipientEmail },
+    const Mail = new mailer({ subject:"WatchTowr Alert", recipient:RecipientEmail },
                            'We found an error on your server. Go to https://htn-threatmonitor.firebaseapp.com for more details');
     Mail.send();
     admin.database().ref('/issues').push({
@@ -69,6 +70,7 @@ function LogIssue(Issue, instance) {
 
 function vulnerable(appVer, threatVer){
     // Assume semver for now. Report whether appVer is vulnerable for the threat
+    console.log('Checking vulns between', appVer, threatVer);
     appVer = appVer.split('.');
     while(appVer.length < 3) { appVer.push('0'); }
     threatVer = threatVer.split('.');
