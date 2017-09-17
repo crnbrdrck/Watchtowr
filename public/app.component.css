@@ -358,7 +358,8 @@ hr{margin-top:20px;margin-bottom:20px;border:0;border-top:1px solid #eee}
 .h4,h4{font-size:18px}
 .h5,h5{font-size:14px}
 .h6,h6{font-size:12px}
-p{font-size:24px;}
+
+p{font-size:24px; font-color:#181818;}
 
 .lead{margin-bottom:20px;font-size:16px;font-weight:300;line-height:1.4}
 address,blockquote .small,blockquote footer,blockquote small,dd,dt,pre{line-height:1.42857143}
